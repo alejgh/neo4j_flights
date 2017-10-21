@@ -1,31 +1,31 @@
 id,name,city,country,iata,icao,latitude,longitude,altitude,timezone,dst,tz_time_zone,type,source
-74,Atikokan Municipal Airport,Atikokan,Canada,YIB,CYIB,48.7738990784,-91.6386032104,1408,-5,A,America/Coral_Harbour,airport,OurAirports
-80,Schefferville Airport,Schefferville,Canada,YKL,CYKL,54.805301666259766,-66.8052978515625,1709,-5,A,America/Toronto,airport,OurAirports
-185,Lynn Lake Airport,Lynn Lake,Canada,YYL,CYYL,56.86389923095703,-101.07599639892578,1170,-6,A,America/Winnipeg,airport,OurAirports
-407,Norderney Airport,Norderney,Germany,NRD,EDWY,53.70694351196289,7.230000019073486,7,1,E,Europe/Berlin,airport,OurAirports
-601,Kerry Airport,Kerry,Ireland,KIR,EIKY,52.18090057373047,-9.52377986907959,112,0,E,Europe/Dublin,airport,OurAirports
-943,Toliara Airport,Toliara,Madagascar,TLE,FMST,-23.383399963378906,43.72850036621094,29,3,U,Indian/Antananarivo,airport,OurAirports
-1092,Néma Airport,Nema,Mauritania,EMN,GQNI,16.621999740600586,-7.3165998458862305,751,0,N,Africa/Nouakchott,airport,OurAirports
-1267,Cognac-Châteaubernard (BA 709) Air Base,Cognac,France,CNG,LFBG,45.65829849243164,-0.3174999952316284,102,1,E,Europe/Paris,airport,OurAirports
-1419,Saint-Brieuc-Armor Airport,St.-brieuc Armor,France,SBK,LFRT,48.5378,-2.85444,453,1,E,Europe/Paris,airport,OurAirports
-1935,Chub Cay Airport,Chub Cay,Bahamas,CCZ,MYBC,25.41710090637207,-77.88089752197266,5,-5,U,America/Nassau,airport,OurAirports
-2472,Paso De Los Libres Airport,Paso De Los Libres,Argentina,AOL,SARL,-29.6894,-57.1521,230,-3,N,America/Cordoba,airport,OurAirports
-2540,Brig. Lysias Augusto Rodrigues Airport,Carolina,Brazil,CLN,SBCI,-7.32043981552124,-47.45869827270508,565,-3,S,America/Fortaleza,airport,OurAirports
-2665,El Tepual Airport,Puerto Montt,Chile,PMC,SCTE,-41.438899993896484,-73.09400177001953,294,-4,S,America/Santiago,airport,OurAirports
-2686,Reales Tamarindos Airport,Portoviejo,Ecuador,PVO,SEPV,-1.0416500568389893,-80.47219848632812,130,-5,U,America/Guayaquil,airport,OurAirports
-3253,Sultan Khairun Babullah Airport,Ternate,Indonesia,TTE,WAMT,0.831413984298706,127.38099670410156,49,9,N,Asia/Jayapura,airport,OurAirports
-3505,Miramar Marine Corps Air Station - Mitscher Field,Miramar,United States,NKX,KNKX,32.86840057,-117.1429977,477,-8,A,America/Los_Angeles,airport,OurAirports
-3717,General Mitchell International Airport,Milwaukee,United States,MKE,KMKE,42.947200775146484,-87.89659881591797,723,-6,A,America/Chicago,airport,OurAirports
-3914,Ende (H Hasan Aroeboesman) Airport,Ende,Indonesia,ENE,WATE,-8.8492898941,121.661003113,49,8,N,Asia/Makassar,airport,OurAirports
-3944,Pullman Moscow Regional Airport,Pullman,United States,PUW,KPUW,46.7439,-117.110001,2556,-8,A,America/Los_Angeles,airport,OurAirports
-4197,Marsa Alam International Airport,Marsa Alam,Egypt,RMF,HEMA,25.557100296,34.5836982727,251,2,U,Africa/Cairo,airport,OurAirports
-5504,Ivujivik Airport,Ivujivik,Canada,YIK,CYIK,62.417301177978516,-77.92530059814453,126,-5,A,America/Toronto,airport,OurAirports
-5964,Kalskag Airport,Kalskag,United States,KLG,PALG,61.53630065917969,-160.34100341796875,55,-9,A,America/Anchorage,airport,OurAirports
-6407,Korla Airport,Korla,China,KRL,ZWKL,41.69779968261719,86.12889862060547,0,8,U,Asia/Shanghai,airport,OurAirports
-7468,Inishmaan Aerodrome,Inishmaan,Ireland,IIA,EIMN,53.09299850463867,-9.568059921264648,15,0,U,Europe/Dublin,airport,OurAirports
-7592,Kuria Airport,Kuria,Kiribati,KUC,NGKT,0.2186110019683838,173.44200134277344,0,12,U,Pacific/Tarawa,airport,OurAirports
-8273,Douglas Municipal Airport,Douglas,United States,DQH,KDQH,31.476699829101562,-82.8604965209961,257,-5,A,America/New_York,airport,OurAirports
-8815,Sidney Municipal-Lloyd W Carr Field,Sidney,United States,SNY,KSNY,41.10129929,-102.9850006,4313,-7,A,America/Denver,airport,OurAirports
-11071,Pratt Regional Airport,Pratt,United States,PTT,KPTT,37.70159912,-98.74690247,1953,-5,A,\N,airport,OurAirports
-11274,Swan Hill Airport,Swan Hill,Australia,SWH,YSWH,-35.37580108642578,143.5330047607422,234,10,O,\N,airport,OurAirports
-11823,Burley Municipal Airport,Burley,United States,BYI,KBYI,42.542598724399994,-113.772003174,4150,\N,\N,\N,airport,OurAirports
+193,Lester B. Pearson International Airport,Toronto,Canada,YYZ,CYYZ,43.6772003174,-79.63059997559999,569,-5,A,America/Toronto,airport,OurAirports
+302,Brussels Airport,Brussels,Belgium,BRU,EBBR,50.901401519800004,4.48443984985,184,1,E,Europe/Brussels,airport,OurAirports
+340,Frankfurt am Main International Airport,Frankfurt,Germany,FRA,EDDF,50.0333333,8.5705556,364,1,E,Europe/Berlin,airport,OurAirports
+346,Munich International Airport,Munich,Germany,MUC,EDDM,48.353801727295,11.786100387573,1487,1,E,Europe/Berlin,airport,OurAirports
+478,Manchester Airport,Manchester,United Kingdom,MAN,EGCC,53.35369873046875,-2.2749500274658203,257,0,E,Europe/London,airport,OurAirports
+502,London Gatwick Airport,London,United Kingdom,LGW,EGKK,51.148101806640625,-0.19027799367904663,202,0,E,Europe/London,airport,OurAirports
+507,London Heathrow Airport,London,United Kingdom,LHR,EGLL,51.4706,-0.461941,83,0,E,Europe/London,airport,OurAirports
+580,Amsterdam Airport Schiphol,Amsterdam,Netherlands,AMS,EHAM,52.3086013794,4.763889789579999,-11,1,E,Europe/Amsterdam,airport,OurAirports
+1218,Barcelona International Airport,Barcelona,Spain,BCN,LEBL,41.297100067139,2.0784599781036,12,1,E,Europe/Madrid,airport,OurAirports
+1229,Adolfo Suárez Madrid–Barajas Airport,Madrid,Spain,MAD,LEMD,40.471926,-3.56264,1998,1,E,Europe/Madrid,airport,OurAirports
+1382,Charles de Gaulle International Airport,Paris,France,CDG,LFPG,49.0127983093,2.54999995232,392,1,E,Europe/Paris,airport,OurAirports
+1555,Leonardo da Vinci–Fiumicino Airport,Rome,Italy,FCO,LIRF,41.8002778,12.2388889,13,1,E,Europe/Rome,airport,OurAirports
+1701,Atatürk International Airport,Istanbul,Turkey,IST,LTBA,40.9768981934,28.814599990799998,163,3,E,Europe/Istanbul,airport,OurAirports
+2188,Dubai International Airport,Dubai,United Arab Emirates,DXB,OMDB,25.2527999878,55.3643989563,62,4,U,Asia/Dubai,airport,OurAirports
+3077,Chek Lap Kok International Airport,Hong Kong,Hong Kong,HKG,VHHH,22.3089008331,113.915000916,28,8,U,Asia/Hong_Kong,airport,OurAirports
+3316,Singapore Changi Airport,Singapore,Singapore,SIN,WSSS,1.35019,103.994003,22,8,N,Asia/Singapore,airport,OurAirports
+3364,Beijing Capital International Airport,Beijing,China,PEK,ZBAA,40.080101013183594,116.58499908447266,116,8,U,Asia/Shanghai,airport,OurAirports
+3370,Guangzhou Baiyun International Airport,Guangzhou,China,CAN,ZGGG,23.39240074157715,113.29900360107422,50,8,U,Asia/Shanghai,airport,OurAirports
+3395,Chengdu Shuangliu International Airport,Chengdu,China,CTU,ZUUU,30.578500747680664,103.9469985961914,1625,8,U,Asia/Shanghai,airport,OurAirports
+3406,Shanghai Pudong International Airport,Shanghai,China,PVG,ZSPD,31.143400192260742,121.80500030517578,13,8,U,Asia/Shanghai,airport,OurAirports
+3484,Los Angeles International Airport,Los Angeles,United States,LAX,KLAX,33.94250107,-118.4079971,125,-8,A,America/Los_Angeles,airport,OurAirports
+3576,Miami International Airport,Miami,United States,MIA,KMIA,25.79319953918457,-80.29060363769531,8,-5,A,America/New_York,airport,OurAirports
+3670,Dallas Fort Worth International Airport,Dallas-Fort Worth,United States,DFW,KDFW,32.89680099487305,-97.03800201416016,607,-6,A,America/Chicago,airport,OurAirports
+3682,Hartsfield Jackson Atlanta International Airport,Atlanta,United States,ATL,KATL,33.63669967651367,-84.4281005859375,1026,-5,A,America/New_York,airport,OurAirports
+3751,Denver International Airport,Denver,United States,DEN,KDEN,39.861698150635,-104.672996521,5431,-7,A,America/Denver,airport,OurAirports
+3797,John F Kennedy International Airport,New York,United States,JFK,KJFK,40.63980103,-73.77890015,13,-5,A,America/New_York,airport,OurAirports
+3830,Chicago O'Hare International Airport,Chicago,United States,ORD,KORD,41.97859955,-87.90480042,672,-6,A,America/Chicago,airport,OurAirports
+3885,Suvarnabhumi Airport,Bangkok,Thailand,BKK,VTBS,13.681099891662598,100.74700164794922,5,7,U,Asia/Bangkok,airport,OurAirports
+3930,Incheon International Airport,Seoul,South Korea,ICN,RKSI,37.46910095214844,126.45099639892578,23,9,U,Asia/Seoul,airport,OurAirports
+4029,Domodedovo International Airport,Moscow,Russia,DME,UUDD,55.40879821777344,37.90629959106445,588,3,N,Europe/Moscow,airport,OurAirports

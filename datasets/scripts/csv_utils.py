@@ -32,6 +32,17 @@ def pick_random_airports(input_path, output_path, number_of_selections=100):
                     airports_writer.writerow(line)
 
 
+def write_airports(airports, airports_path, output_path):
+    with open(airports_path, 'r', encoding='utf-8') as airports_file:
+        airports_data = csv.DictReader(airports_file)
+        with open(output_path, 'w', encoding='utf-8') as airports_output_file:
+            airports_writer = csv.DictWriter(airports_output_file, airports_data.fieldnames)
+            airports_writer.writeheader()
+            for line in airports_data:
+                if line['iata'] in airports:
+                    airports_writer.writerow(line)
+
+
 def get_routes_from_airports(airports_file_path, routes_file_path):
     airports = []
     with open(airports_file_path, 'r', encoding='utf-8') as airports_data:
@@ -51,7 +62,7 @@ def get_routes_from_airports(airports_file_path, routes_file_path):
                     routes.append((combination[0], combination[1]))
     return routes
 
-def get_best_airports(routes_file_path, num_airports=50):
+def get_busiest_airports(routes_file_path, num_airports=50):
     airports = defaultdict(int)
     with open(routes_file_path, 'r', encoding='utf-8') as routes_data:
         routes_reader = csv.DictReader(routes_data)
@@ -60,4 +71,5 @@ def get_best_airports(routes_file_path, num_airports=50):
             dest = route['dest_airport']
             airports[src] += 1
             airports[dest] += 1
-    return sorted(airports.items(), key=lambda k_v: k_v[1], reverse=True)[:num_airports]
+    sorted_airports = sorted(airports.items(), key=lambda k_v: k_v[1], reverse=True)[:num_airports]
+    return [pair[0] for pair in sorted_airports]
