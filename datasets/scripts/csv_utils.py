@@ -99,3 +99,23 @@ def get_busiest_airports(routes_file_path, num_airports=50):
             airports[dest] += 1
     sorted_airports = sorted(airports.items(), key=lambda k_v: k_v[1], reverse=True)[:num_airports]
     return [pair[0] for pair in sorted_airports]
+
+
+def get_airlines_in_flights(flights_file_path):
+    airlines = set()
+    with open(flights_file_path, 'r') as flights_data:
+        flights_reader = csv.DictReader(flights_data)
+        for flight in flights_reader:
+            airlines.add(flight['airline_code'])
+    return airlines
+
+
+def write_airlines(airlines, output_path):
+    with open('../original/airlines.csv', 'r') as airlines_data:
+        airlines_reader = csv.DictReader(airlines_data)
+        with open(output_path, 'w') as output_data:
+            writer = csv.DictWriter(output_data, airlines_reader.fieldnames)
+            writer.writeheader()
+            for line in airlines_reader:
+                if line['iata'] in airlines:
+                    writer.writerow(line)

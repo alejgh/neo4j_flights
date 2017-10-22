@@ -15,7 +15,8 @@ def main():
     appKey = input('Introduce your flightaware app Key: ')
     flightstats.write_json_flight_data(routes, dates, appID, appKey, '../generated/flights.json')
     csv_utils.json_to_csv('../generated/flights.json', '../generated/flights.csv')
-
+    airlines = csv_utils.get_airlines_in_flights('../generated/flights.csv')
+    csv_utils.write_airlines(airlines, '../generated/airlines_filtered.csv')
 
 if __name__ == '__main__':
     main()

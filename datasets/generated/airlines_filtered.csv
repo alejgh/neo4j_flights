@@ -1,0 +1,143 @@
+id,name,alias,iata,icao,callsign,country,active
+24,American Airlines,\N,AA,AAL,AMERICAN,United States,Y
+28,Asiana Airlines,\N,OZ,AAR,ASIANA,South Korea,Y
+83,Adria Airways,\N,JP,ADR,ADRIA,Slovenia,Y
+90,Air Europa,\N,UX,AEA,EUROPA,Spain,Y
+96,Aegean Airlines,\N,A3,AEE,AEGEAN,Greece,Y
+130,Aeroflot Russian Airlines,\N,SU,AFL,AEROFLOT,Russia,Y
+137,Air France,\N,AF,AFR,AIRFRANS,France,Y
+153,Air Namibia,\N,SW,NMB,NAMIBIA,Namibia,Y
+218,Air India Limited,\N,AI,AIC,AIRINDIA,India,Y
+225,Air Tahiti Nui,\N,TN,THT,TAHITI AIRLINES,France,Y
+242,Air Malta,\N,KM,AMC,AIR MALTA,Malta,Y
+312,British Midland Regional Limited,\N,BM,,,United Kingdom,Y
+319,Air Seychelles,\N,HM,SEY,SEYCHELLES,Seychelles,Y
+321,AeroMéxico,\N,AM,AMX,AEROMEXICO,Mexico,Y
+324,All Nippon Airways,ANA All Nippon Airways,NH,ANA,ALL NIPPON,Japan,Y
+330,Air Canada,\N,AC,ACA,AIR CANADA,Canada,Y
+333,Air Baltic,\N,BT,BTI,AIRBALTIC,Latvia,Y
+345,Air New Zealand,\N,NZ,ANZ,NEW ZEALAND,New Zealand,Y
+412,Aerolineas Argentinas,\N,AR,ARG,ARGENTINA,Argentina,Y
+439,Alaska Airlines,\N,AS,ASA, Inc.,ALASKA,Y
+462,Astrakhan Airlines,\N,OB,ASZ,AIR ASTRAKHAN,Russia,Y
+491,Austrian Airlines,\N,OS,AUA,AUSTRIAN,Austria,Y
+515,Avianca - Aerovias Nacionales de Colombia,\N,AV,AVA, S.A.,AVIANCA,Y
+596,Alitalia,\N,AZ,AZA,ALITALIA,Italy,Y
+751,Air China,\N,CA,CCA,AIR CHINA,China,Y
+837,Aer Lingus,\N,EI,EIN,SHAMROCK,Ireland,Y
+879,Air Pacific,\N,FJ,FJI,PACIFIC,Fiji,Y
+995,Atlasjet,\N,KK,KKK,ATLASJET,Turkey,Y
+1034,Aerolane,\N,XL,LNE,LAN ECUADOR,Ecuador,Y
+1057,Air Mauritius,\N,MK,MAU,AIRMAURITIUS,Mauritius,Y
+1191,Air Austral,\N,UU,REU,REUNION,France,Y
+1299,Arkefly,\N,OR,TFL,ARKEFLY,Netherlands,Y
+1317,Air Transat,\N,TS,TSC,TRANSAT,Canada,Y
+1355,British Airways,\N,BA,BAW,SPEEDBIRD,United Kingdom,Y
+1422,Bangkok Airways,\N,PG,BKP,BANGKOK AIR,Thailand,Y
+1531,Brussels Airlines,SN Brussels Airlines,SN,DAT,BEE-LINE,Belgium,Y
+1680,Cathay Pacific,\N,CX,CPA,CATHAY,Hong Kong SAR of China,Y
+1756,China Airlines,\N,CI,CAL,DYNASTY,Taiwan,Y
+1758,China Eastern Airlines,\N,MU,CES,CHINA EASTERN,China,Y
+1767,China Southern Airlines,\N,CZ,CSN,CHINA SOUTHERN,China,Y
+1792,CityJet,\N,WX,BCY,CITY-IRELAND,Ireland,Y
+1868,Condor Flugdienst,\N,DE,CFG,CONDOR,Germany,Y
+1889,Copa Airlines,\N,CM,CMP,COPA,Panama,Y
+1925,Croatia Airlines,\N,OU,CTN,CROATIA,Croatia,Y
+1946,Czech Airlines,CSA Czech Airlines,OK,CSA,CSA-LINES,Czech Republic,Y
+2009,Delta Air Lines,\N,DL,DAL,DELTA,United States,Y
+2041,Djibouti Airlines,\N,D8,DJB,DJIBOUTI AIR,Djibouti,Y
+2056,Dragonair,\N,KA,HDA, Hong Kong Dragon Airlines,DRAGON,Y
+2091,EVA Air,\N,BR,EVA,EVA,Taiwan,Y
+2143,Egyptair,\N,MS,MSR,EGYPTAIR,Egypt,Y
+2150,El Al Israel Airlines,\N,LY,ELY,ELAL,Israel,Y
+2183,Emirates,Emirates Airlines,EK,UAE,EMIRATES,United Arab Emirates,Y
+2193,Empresa Ecuatoriana De Aviacion,\N,EU,EEA,ECUATORIANA,Ecuador,Y
+2220,Ethiopian Airlines,\N,ET,ETH,ETHIOPIAN,Ethiopia,Y
+2222,Etihad Airways,\N,EY,ETD,ETIHAD,United Arab Emirates,Y
+2260,Eurowings,\N,EW,EWG,EUROWINGS,Germany,Y
+2297,easyJet,EasyJet Airline,U2,EZY,EASY,United Kingdom,Y
+2350,Finnair,\N,AY,FIN,FINNAIR,Finland,Y
+2421,Flybe,\N,BE,BEE,JERSEY,United Kingdom,Y
+2468,Frontier Airlines,\N,F9,FFT,FRONTIER FLIGHT,United States,Y
+2520,Garuda Indonesia,\N,GA,GIA,INDONESIA,Indonesia,Y
+2581,Gol Transportes Aéreos,\N,G3,GLO,GOL TRANSPORTE,Brazil,Y
+2638,Gulf Air Bahrain,\N,GF,GBA,GULF BAHRAIN,Bahrain,Y
+2660,Hainan Airlines,\N,HU,CHH,HAINAN,China,Y
+2688,Hawaiian Airlines,\N,HA,HAL,HAWAIIAN,United States,Y
+2773,Hong Kong Airlines,\N,HX,CRK,BAUHINIA,Hong Kong SAR of China,Y
+2774,Hong Kong Express Airways,\N,UO,HKE,HONGKONG SHUTTLE,Hong Kong SAR of China,Y
+2822,Iberia Airlines,\N,IB,IBE,IBERIA,Spain,Y
+2835,Icelandair,\N,FI,ICE,ICEAIR,Iceland,Y
+2987,Japan Airlines,JAL Japan Airlines,JL,JAL,JAPANAIR,Japan,Y
+2994,Jeju Air,\N,7C,JJA,JEJU AIR,South Korea,Y
+3000,Jet Airways,\N,9W,JAI,JET AIRWAYS,India,Y
+3021,Jetstar Asia Airways,\N,3K,JSA,JETSTAR ASIA,Singapore,Y
+3026,Jet2.com,\N,LS,EXS,CHANNEX,United Kingdom,Y
+3029,JetBlue Airways,\N,B6,JBU,JETBLUE,United States,Y
+3081,Juneyao Airlines,\N,HO,DKH,JUNEYAO AIRLINES,China,Y
+3090,KLM Royal Dutch Airlines,\N,KL,KLM,KLM,Netherlands,Y
+3108,Katekavia,\N,KT,KTK,KATEKAVIA,Russia,N
+3126,Kenya Airways,\N,KQ,KQA,KENYA,Kenya,Y
+3163,Korean Air,\N,KE,KAL,KOREANAIR,South Korea,Y
+3200,LAN Airlines,\N,LA,LAN,LAN,Chile,Y
+3201,LAN Argentina,\N,4M,DSM,LAN AR,Argentina,Y
+3210,LOT Polish Airlines,\N,LO,LOT,POLLOT,Poland,Y
+3321,Lufthansa Cargo,\N,LH,GEC,LUFTHANSA CARGO,Germany,Y
+3354,MIAT Mongolian Airlines,\N,OM,MGL,MONGOL AIR,Mongolia,Y
+3378,Malaysia Airlines,\N,MH,MAS,MALAYSIAN,Malaysia,Y
+3490,Middle East Airlines,\N,ME,MEA,CEDAR JET,Lebanon,Y
+3737,Norwegian Air Shuttle,\N,DY,NAX,NOR SHUTTLE,Norway,Y
+3778,Oman Air,\N,WY,OMA,OMAN AIR,Oman,Y
+3839,Plus Ultra Lineas Aereas,\N,PU,PUA,PLUNA,Spain,Y
+3871,Pakistan International Airlines,PIA Pakistan International,PK,PIA,PAKISTAN,Pakistan,Y
+4089,Qantas,Qantas Airways,QF,QFA,QANTAS,Australia,Y
+4091,Qatar Airways,\N,QR,QTR,QATARI,Qatar,Y
+4248,Royal Air Maroc,\N,AT,RAM,ROYALAIR MAROC,Morocco,Y
+4255,Royal Brunei Airlines,\N,BI,RBA,BRUNEI,Brunei,Y
+4259,Royal Jordanian,\N,RJ,RJA,JORDANIAN,Jordan,Y
+4292,Rwandair Express,\N,WB,RWD,RWANDAIR,Rwanda,Y
+4296,Ryanair,\N,FR,RYR,RYANAIR,Ireland,Y
+4305,South African Airways,SAA South African Airways,SA,SAA,SPRINGBOK,South Africa,Y
+4319,Scandinavian Airlines System,SAS Scandinavian Airlines,SK,SAS,SCANDINAVIAN,Sweden,Y
+4329,S7 Airlines,Sibir Airlines,S7,SBI,SIBERIAN AIRLINES,Russia,Y
+4349,SriLankan Airlines,\N,UL,ALK,SRILANKAN,Sri Lanka,Y
+4435,Singapore Airlines,\N,SQ,SIA,SINGAPORE,Singapore,Y
+4533,Saudi Arabian Airlines,\N,SV,SVA,SAUDIA,Saudi Arabia,Y
+4547,Southwest Airlines,\N,WN,SWA,SOUTHWEST,United States,Y
+4559,Swiss International Air Lines,Swiss Airlines,LX,SWR,SWISS,Switzerland,Y
+4608,Sichuan Airlines,\N,3U,CSC,SI CHUAN,China,Y
+4609,Shanghai Airlines,\N,FM,CSH,SHANGHAI AIR,China,Y
+4611,Shenzhen Airlines,\N,ZH,CSZ,SHENZHEN AIR,China,Y
+4687,Spirit Airlines,\N,NK,NKS,SPIRIT WINGS,United States,Y
+4750,SilkAir,\N,MI,SLK,SILKAIR,Singapore,Y
+4867,TAM Brazilian Airlines,\N,JJ,TAM,TAM,Brazil,Y
+4869,TAP Portugal,TAP Air Portugal,TP,TAP,AIR PORTUGAL,Portugal,Y
+4897,Thomas Cook Airlines,\N,MT,TCX,KESTREL,United Kingdom,Y
+4936,Tiger Airways,\N,TR,TGW,GO CAT,Singapore,Y
+4940,Thai Airways International,\N,TG,THA,THAI,Thailand,Y
+4951,Turkish Airlines,\N,TK,THY,TURKAIR,Turkey,Y
+5039,Transavia Holland,\N,HV,TRA,TRANSAVIA,Netherlands,Y
+5098,Trans World Airlines,TWA,TW,TWA,TWA,United States,N
+5179,Tarom,\N,RO,ROT,TAROM,Romania,Y
+5209,United Airlines,\N,UA,UAL,UNITED,United States,Y
+5234,Ural Airlines,\N,U6,SVR,SVERDLOVSK AIR,Russia,Y
+5282,Ukraine International Airlines,\N,PS,AUI,UKRAINE INTERNATIONAL,Ukraine,Y
+5309,Vietnam Airlines,\N,VN,HVN,VIET NAM AIRLINES,Vietnam,Y
+5331,Virgin America,\N,VX,VRD,REDWOOD,United States,Y
+5347,Virgin Atlantic Airways,\N,VS,VIR,VIRGIN,United Kingdom,Y
+5352,Vueling Airlines,\N,VY,VLG,VUELING,Spain,Y
+5360,Virgin Australia,\N,VA,VOZ,VIRGIN,Australia,Y
+5416,WestJet,\N,WS,WJA,WESTJET,Canada,Y
+5479,XL Airways France,\N,SE,SEU,STARWAY,France,Y
+5484,Xiamen Airlines,\N,MF,CXA,XIAMEN AIR,China,Y
+6557,Japan Air System,,JD,JAS,Air System,Japan,Y
+9809,Eastar Jet,,ZE,ESR,Eastar,South Korea,Y
+9810,Jin Air,,LJ,JNA,Jin Air,South Korea,Y
+10124,California Western,,KT,CWS,,United States,N
+13108,Maldivian,,Q2,\N,ISLAND AVIATION,Maldives,Y
+13983,Azul,Azul Linhas Aéreas Brasileiras,AD,AZU,,Brazil,Y
+14485,Fly Dubai,,FZ,FDB,,United Arab Emirates,Y
+15999,China SSS,Chunqiu Airlines,9C,\N,,China,Y
+16624,Tway Airlines,,TW,TWB,TWAY AIR,South Korea,Y
+16837,VickJet,,KT,VKJ,Vickjet,France,Y
+19582,Air Serbia,\N,JU,ASL,AIR SERBIA,Serbia,Y
