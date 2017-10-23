@@ -45,7 +45,6 @@ id,name,alias,iata,icao,callsign,country,active
 1925,Croatia Airlines,\N,OU,CTN,CROATIA,Croatia,Y
 1946,Czech Airlines,CSA Czech Airlines,OK,CSA,CSA-LINES,Czech Republic,Y
 2009,Delta Air Lines,\N,DL,DAL,DELTA,United States,Y
-2041,Djibouti Airlines,\N,D8,DJB,DJIBOUTI AIR,Djibouti,Y
 2056,Dragonair,\N,KA,HDA, Hong Kong Dragon Airlines,DRAGON,Y
 2091,EVA Air,\N,BR,EVA,EVA,Taiwan,Y
 2143,Egyptair,\N,MS,MSR,EGYPTAIR,Egypt,Y
@@ -69,14 +68,12 @@ id,name,alias,iata,icao,callsign,country,active
 2822,Iberia Airlines,\N,IB,IBE,IBERIA,Spain,Y
 2835,Icelandair,\N,FI,ICE,ICEAIR,Iceland,Y
 2987,Japan Airlines,JAL Japan Airlines,JL,JAL,JAPANAIR,Japan,Y
-2994,Jeju Air,\N,7C,JJA,JEJU AIR,South Korea,Y
 3000,Jet Airways,\N,9W,JAI,JET AIRWAYS,India,Y
 3021,Jetstar Asia Airways,\N,3K,JSA,JETSTAR ASIA,Singapore,Y
 3026,Jet2.com,\N,LS,EXS,CHANNEX,United Kingdom,Y
 3029,JetBlue Airways,\N,B6,JBU,JETBLUE,United States,Y
 3081,Juneyao Airlines,\N,HO,DKH,JUNEYAO AIRLINES,China,Y
 3090,KLM Royal Dutch Airlines,\N,KL,KLM,KLM,Netherlands,Y
-3108,Katekavia,\N,KT,KTK,KATEKAVIA,Russia,N
 3126,Kenya Airways,\N,KQ,KQA,KENYA,Kenya,Y
 3163,Korean Air,\N,KE,KAL,KOREANAIR,South Korea,Y
 3200,LAN Airlines,\N,LA,LAN,LAN,Chile,Y
@@ -88,7 +85,6 @@ id,name,alias,iata,icao,callsign,country,active
 3490,Middle East Airlines,\N,ME,MEA,CEDAR JET,Lebanon,Y
 3737,Norwegian Air Shuttle,\N,DY,NAX,NOR SHUTTLE,Norway,Y
 3778,Oman Air,\N,WY,OMA,OMAN AIR,Oman,Y
-3839,Plus Ultra Lineas Aereas,\N,PU,PUA,PLUNA,Spain,Y
 3871,Pakistan International Airlines,PIA Pakistan International,PK,PIA,PAKISTAN,Pakistan,Y
 4089,Qantas,Qantas Airways,QF,QFA,QANTAS,Australia,Y
 4091,Qatar Airways,\N,QR,QTR,QATARI,Qatar,Y
@@ -112,12 +108,10 @@ id,name,alias,iata,icao,callsign,country,active
 4750,SilkAir,\N,MI,SLK,SILKAIR,Singapore,Y
 4867,TAM Brazilian Airlines,\N,JJ,TAM,TAM,Brazil,Y
 4869,TAP Portugal,TAP Air Portugal,TP,TAP,AIR PORTUGAL,Portugal,Y
-4897,Thomas Cook Airlines,\N,MT,TCX,KESTREL,United Kingdom,Y
 4936,Tiger Airways,\N,TR,TGW,GO CAT,Singapore,Y
 4940,Thai Airways International,\N,TG,THA,THAI,Thailand,Y
 4951,Turkish Airlines,\N,TK,THY,TURKAIR,Turkey,Y
 5039,Transavia Holland,\N,HV,TRA,TRANSAVIA,Netherlands,Y
-5098,Trans World Airlines,TWA,TW,TWA,TWA,United States,N
 5179,Tarom,\N,RO,ROT,TAROM,Romania,Y
 5209,United Airlines,\N,UA,UAL,UNITED,United States,Y
 5234,Ural Airlines,\N,U6,SVR,SVERDLOVSK AIR,Russia,Y
@@ -133,11 +127,8 @@ id,name,alias,iata,icao,callsign,country,active
 6557,Japan Air System,,JD,JAS,Air System,Japan,Y
 9809,Eastar Jet,,ZE,ESR,Eastar,South Korea,Y
 9810,Jin Air,,LJ,JNA,Jin Air,South Korea,Y
-10124,California Western,,KT,CWS,,United States,N
 13108,Maldivian,,Q2,\N,ISLAND AVIATION,Maldives,Y
 13983,Azul,Azul Linhas Aéreas Brasileiras,AD,AZU,,Brazil,Y
 14485,Fly Dubai,,FZ,FDB,,United Arab Emirates,Y
 15999,China SSS,Chunqiu Airlines,9C,\N,,China,Y
-16624,Tway Airlines,,TW,TWB,TWAY AIR,South Korea,Y
-16837,VickJet,,KT,VKJ,Vickjet,France,Y
 19582,Air Serbia,\N,JU,ASL,AIR SERBIA,Serbia,Y

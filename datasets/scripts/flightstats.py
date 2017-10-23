@@ -28,7 +28,7 @@ def write_json_flight_data(routes, dates, appId, appKey, output_path):
 
 
 def parse_flight_time(time):
-    pair = time.replace('T','').split('.')
+    pair = time.replace('T',' ').split('.')
     if pair[1] != '000':
         return None
     return pair[0]
