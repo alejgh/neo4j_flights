@@ -18,10 +18,10 @@ id,name,alias,iata,icao,callsign,country,active
 333,Air Baltic,\N,BT,BTI,AIRBALTIC,Latvia,Y
 345,Air New Zealand,\N,NZ,ANZ,NEW ZEALAND,New Zealand,Y
 412,Aerolineas Argentinas,\N,AR,ARG,ARGENTINA,Argentina,Y
-439,Alaska Airlines,\N,AS,ASA, Inc.,ALASKA,Y
+439,Alaska Airlines,\N,AS,ASA, Inc.,United States,Y
 462,Astrakhan Airlines,\N,OB,ASZ,AIR ASTRAKHAN,Russia,Y
 491,Austrian Airlines,\N,OS,AUA,AUSTRIAN,Austria,Y
-515,Avianca - Aerovias Nacionales de Colombia,\N,AV,AVA, S.A.,AVIANCA,Y
+515,Avianca - Aerovias Nacionales de Colombia,\N,AV,AVA, S.A.,Colombia,Y
 596,Alitalia,\N,AZ,AZA,ALITALIA,Italy,Y
 751,Air China,\N,CA,CCA,AIR CHINA,China,Y
 837,Aer Lingus,\N,EI,EIN,SHAMROCK,Ireland,Y
@@ -35,7 +35,7 @@ id,name,alias,iata,icao,callsign,country,active
 1355,British Airways,\N,BA,BAW,SPEEDBIRD,United Kingdom,Y
 1422,Bangkok Airways,\N,PG,BKP,BANGKOK AIR,Thailand,Y
 1531,Brussels Airlines,SN Brussels Airlines,SN,DAT,BEE-LINE,Belgium,Y
-1680,Cathay Pacific,\N,CX,CPA,CATHAY,Hong Kong SAR of China,Y
+1680,Cathay Pacific,\N,CX,CPA,CATHAY,Hong Kong,Y
 1756,China Airlines,\N,CI,CAL,DYNASTY,Taiwan,Y
 1758,China Eastern Airlines,\N,MU,CES,CHINA EASTERN,China,Y
 1767,China Southern Airlines,\N,CZ,CSN,CHINA SOUTHERN,China,Y
@@ -46,7 +46,7 @@ id,name,alias,iata,icao,callsign,country,active
 1946,Czech Airlines,CSA Czech Airlines,OK,CSA,CSA-LINES,Czech Republic,Y
 2009,Delta Air Lines,\N,DL,DAL,DELTA,United States,Y
 2041,Djibouti Airlines,\N,D8,DJB,DJIBOUTI AIR,Djibouti,Y
-2056,Dragonair,\N,KA,HDA, Hong Kong Dragon Airlines,DRAGON,Y
+2056,Dragonair,\N,KA,HDA, Hong Kong Dragon Airlines,Hong Kong,Y
 2091,EVA Air,\N,BR,EVA,EVA,Taiwan,Y
 2143,Egyptair,\N,MS,MSR,EGYPTAIR,Egypt,Y
 2150,El Al Israel Airlines,\N,LY,ELY,ELAL,Israel,Y
@@ -64,8 +64,8 @@ id,name,alias,iata,icao,callsign,country,active
 2638,Gulf Air Bahrain,\N,GF,GBA,GULF BAHRAIN,Bahrain,Y
 2660,Hainan Airlines,\N,HU,CHH,HAINAN,China,Y
 2688,Hawaiian Airlines,\N,HA,HAL,HAWAIIAN,United States,Y
-2773,Hong Kong Airlines,\N,HX,CRK,BAUHINIA,Hong Kong SAR of China,Y
-2774,Hong Kong Express Airways,\N,UO,HKE,HONGKONG SHUTTLE,Hong Kong SAR of China,Y
+2773,Hong Kong Airlines,\N,HX,CRK,BAUHINIA,Hong Kong,Y
+2774,Hong Kong Express Airways,\N,UO,HKE,HONGKONG SHUTTLE,Hong Kong,Y
 2822,Iberia Airlines,\N,IB,IBE,IBERIA,Spain,Y
 2835,Icelandair,\N,FI,ICE,ICEAIR,Iceland,Y
 2987,Japan Airlines,JAL Japan Airlines,JL,JAL,JAPANAIR,Japan,Y
