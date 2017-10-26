@@ -1,0 +1,132 @@
+Creation of the database:
+
+1.- Create some indexes to make the following instructions faster:
+    CREATE INDEX ON :Country(name)
+
+2.- Constraints:
+    CREATE CONSTRAINT ON (country:Country) ASSERT country.id IS UNIQUE
+    CREATE CONSTRAINT ON (al:Airline) ASSERT al.iata IS UNIQUE
+    CREATE CONSTRAINT ON (f:Flight) ASSERT f.number IS UNIQUE
+
+
+2.- Import the CSV countries data and map it to nodes:
+    LOAD CSV WITH HEADERS
+    FROM 'https://raw.githubusercontent.com/alejgh/neo4j_flights/master/datasets/countries.csv'
+    AS line
+    CREATE (:Country { code: line.Code, name: line.Name })
+
+3.- Import the airport data and join them to their corresponding country:
+    LOAD CSV WITH HEADERS
+    FROM 'https://raw.githubusercontent.com/alejgh/neo4j_flights/master/datasets/airports.csv'
+    AS line
+    CREATE (a:Airport { name: line.name, city: line.city, iata: line.iata, icao: line.icao })
+    WITH a, line
+    MATCH (c:Country)
+    WHERE c.name = line.country
+    CREATE (a)-[:IS_LOCATED_IN]->(c)
+
+4.- Airlines:
+    USING PERIODIC COMMIT
+    LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/alejgh/neo4j_flights/master/datasets/airlines.csv' AS line
+    CREATE (a:Airline { name: line.name, city: line.city, iata: line.iata, icao: line.icao })
+    WITH a, line
+    MATCH (c:Country)
+    WHERE c.name = line.country
+    CREATE (a)-[:IS_INCORPORATED_IN]->(c)
+
+5.- Import the flights data and create the corresponding relationships:
+    USING PERIODIC COMMIT
+    LOAD CSV WITH HEADERS FROM
+    'https://raw.githubusercontent.com/alejgh/neo4j_flights/master/datasets/flights.csv'
+    AS line
+    CREATE (flight:Flight { number: line.flight_number })
+    WITH flight, line
+    MATCH (departure:Airport)
+    MATCH (arrival:Airport)
+    MATCH (airline:Airline)
+    WHERE departure.iata = line.departure_airport AND arrival.iata = line.arrival_airport
+    AND airline.iata = line.airline_code
+    CREATE (airline)-[:PROVIDES]->(flight),
+    (flight)-[:DEPARTS_AT { date: line.departure_time, timestamp: line.departure_timestamp }]->(departure),
+    (flight)-[:ARRIVES_AT { date: line.arrival_time, timestamp: line.arrival_timestamp}]->(arrival)
+
+
+Queries:
+
+- Basics queries
+    1.- Airlines with their country.
+
+        MATCH (a:Airline)-[:IS_INCORPORATED_IN]->(c:Country)
+        RETURN a.name as Airline, a.iata as IATA, a.icao as ICAO, c.name as Country
+
+
+    2.- Top 10 airlines that provide the most amount of flights.
+
+        MATCH (airline:Airline)-[:PROVIDES]->(f:Flight)
+        RETURN airline.name as airline, count(f) as flights_provided
+        ORDER BY flights_provided DESC
+        LIMIT 10
+
+
+    3.- Flights from Seoul to London:
+
+        MATCH (dptAirp:Airport)<-[dptAt:DEPARTS_AT]-(:Flight)-[arrAt:ARRIVES_AT]->(arrAirp:Airport)
+        WHERE dptAirp.city = 'Seoul' and arrAirp.city = 'London'
+        RETURN DISTINCT dptAirp.name as departure_airport, dptAt.date as departure_date, arrAt.date as arrival_date, arrAirp.name as arrival_airport
+        ORDER BY departure_date
+
+
+    4.- Number of departures in every airport each day:
+
+        MATCH (airport:Airport)<-[departs:DEPARTS_AT]-(f:Flight)
+        RETURN airport.name as airport, split(departs.date, ' ')[0] as day, count(f) as departures
+        ORDER BY airport.name, day
+
+- Intermediate queries
+    1.- Flights from Spain to the United States ordered by date.
+
+        MATCH (dptAirp:Airport)<-[dptAt:DEPARTS_AT]-(:Flight)-[arrAt:ARRIVES_AT]->(arrAirp:Airport),
+              (spain:Country)<-[:IS_LOCATED_IN]-(dptAirp), (us:Country)<-[:IS_LOCATED_IN]-(arrAirp)
+        WHERE spain.code = 'ES' and us.code = 'US'
+        RETURN DISTINCT dptAirp.name as departure_airport, dptAt.date as departure_date, arrAt.date as arrival_date, arrAirp.name as arrival_airport
+        ORDER BY departure_date
+
+
+    2.- Number of flights departing from and arriving to every airport.
+
+        MATCH (airport:Airport)<-[:DEPARTS_AT]-(f:Flight)
+        WITH airport, count(f) as departures
+        MATCH (f2:Flight)-[:ARRIVES_AT]->(airport)
+        RETURN airport.name as airport_name, departures, count(f2) as arrivals
+
+
+    3.- Flights from New York to Los Angeles on the 8th of November,
+    and also the airline that provides the flight.
+
+        MATCH (dpt_airp:Airport{city: 'New York'})<-[departure:DEPARTS_AT]-(f:Flight)-[:ARRIVES_AT]->(arr_airp:Airport{city: 'Los Angeles'}), (airline:Airline)-[:PROVIDES]->(f)
+        WHERE departure.date > '2017-11-08 00:00:00' AND departure.date < '2017-11-09 00:00:00'
+        RETURN airline.name as airline, dpt_airp.name as departure_airport, arr_airp.name as arrival_airport, departure.date as departure_date
+        ORDER BY departure.date
+
+
+- Advanced queries
+    1.- How many ways are there to go from London Gatwick to Incheon Airport (Seoul)
+    on the 9th of November doing 2 flights at most.
+        MATCH p=((src:Airport{name: 'London Gatwick Airport'})-[*1..4]-(dest:Airport{name: 'Incheon International Airport'}))
+        WHERE ALL (i in range(0, size(relationships(p))-2) WHERE (relationships(p)[i]).date < (relationships(p)[i+1]).date)
+        AND (relationships(p)[0]).date > '2017-11-07 00:00:00'
+        RETURN p
+
+    2.- With which of the previous paths do we get faster to Seoul?
+        MATCH p=((src:Airport{name: 'London Gatwick Airport'})-[*1..4]-(dest:Airport{name: 'Incheon International Airport'}))
+        WHERE ALL (i in range(0, size(relationships(p))-2) WHERE (relationships(p)[i]).date < (relationships(p)[i+1]).date)
+        AND (relationships(p)[0]).date > '2017-11-07 00:00:00'
+        RETURN p
+        ORDER BY (relationships(p)[size(relationships(p))-1]).date
+        LIMIT 1
+
+    3.- Shortest path from Madrid to Seoul (the path that uses the least amount
+    of flights to reach the destination, not the one that arrives earlier).
+        MATCH p=shortestpath((src:Airport{city: 'Madrid'})-[*..15]-(dest:Airport{city: 'Seoul'}))
+        WHERE ALL (i in range(0, size(relationships(p))-2) WHERE (relationships(p)[i]).date < (relationships(p)[i+1]).date)
+        RETURN p
