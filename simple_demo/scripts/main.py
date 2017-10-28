@@ -63,11 +63,14 @@ def process_user_input(user_input, conn):
 
 def main():
     clr.init()
-    port = '7687'
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--port', type=str,
+                        help='port where bolt is enabled', default='7687')
+    args = parser.parse_args()
     username = input("Introduce your neo4j username: ")
     password = getpass.getpass("Introduce your password: ")
 
-    with FlightsConnection(port, username, password) as conn:
+    with FlightsConnection(args.port, username, password) as conn:
         print_queries()
         print_help()
         while not exit:
