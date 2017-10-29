@@ -40,7 +40,7 @@ def process_user_input(user_input, conn):
     """
     This function checks if the user input is a int. If it is,
     it calls the corresponding function from neo4j_queries.
-    If it isn't an int
+    If it isn't an int it will parse the string.
     """
     try:
         int(user_input)
