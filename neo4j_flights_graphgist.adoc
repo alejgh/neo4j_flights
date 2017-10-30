@@ -1,0 +1,277 @@
+= FLIGHTS_PLANNER
+:neo4j-version: 3.2.5
+:author: Alejandro González Hevia
+
+== Introduction
+Air travelling has changed a lot over the last years, and nowadays the flight network is really complex. Two years ago, there were an average of 100,000 flights a day, and this number keeps increasing every year. Passengers have many available options to reach almost any city in the world at any given day. 
+Using a graph database we can model the flight network really easily, and stablish the best routes between every pair of airports. 
+
+== The Model
+The model I have used to represent the flight network looks like this:
+
+.Model used to represent the flight network.
+image::https://gist.githubusercontent.com/alejgh/99ef4c85d6e35250666b0d3be3144624/raw/388f24d94484017e5bf299daa01c0850ba1cf554/model.jpg[width=600, align="center"]
+
+We can distinguish the following nodes in the model:
+
+- Country: As the name says it represents each different country in our world. It has the following attributes:
+   * Name: The name of the country.
+   * Code: 2-letter ISO code of the country.
+
+- Airport: Each airport will have this set of attributes:
+   * Name: Name of the airport.
+   * City: Main city served by airport.
+   * IATA: 3-letter IATA code of the airport, defined by the http://www.iata.org/Pages/default.aspx[International Air Transport Association].
+   * ICAO: 4-letter ICAO code of the airport.
+
+- Airline: Each airline will have the following attributes:
+   * Name: The name of the airline.
+   * IATA: 2-letter IATA code, if available.
+   * ICAO: 3-letter ICAO code, if available.
+
+- Flight: It only has the following attribute.
+   * Flight Number: Flight number returned by FlightStats (we will explain this later on). *It is not unique*.
+
+And our relationships are:
+
+- IS_INCORPORATED_IN: It represents in which country each airline is incorporated. It has no attributes.
+
+- PROVIDES: This relationship represents which airline provides a specific flight. It also doesn`t have any attribute.
+
+- DEPARTS_AT: It represents from which airport a flight departs. It has two attributes:
+   * Date: The date and time when the flight departs. The format of the date will be 'YYYY-MM-DD HH:mm:ss', so we can compare dates easily.
+   * Timestamp: The date and time encoded using the https://en.wikipedia.org/wiki/Unix_time[Unix time system]. We will not use the timestamp in this GraphGist.
+
+- ARRIVES_AT: It represents which is the arrival airport of a flight. It has the same attributes as the previous relationship:
+   * Date: The date and time when the flight arrives. Same format as before.
+   * Timestamp: Same as before.
+
+- IS_LOCATED_IN: This relationship represents in which country an airport is located. It has no attributes.
+
+Here you can see a snapshot of how our database will look like after we create the nodes and relationships:
+
+.Snapshot of the database.
+image::https://gist.githubusercontent.com/alejgh/99ef4c85d6e35250666b0d3be3144624/raw/333d2b8db7eaee49690eb7bccf44b2de84910dda/instance.png[width=600, align="center"]
+
+== Data sets used
+In order to create the different nodes and relationship of this GraphGist I will use several data sets obtained from different resources. If you want to see the datasets and a more detailed description of them you can check my https://github.com/alejgh/neo4j_flights/tree/master/datasets[github page] where I store the datasets. I will describe each dataset briefly here:
+
+- Countries.csv: The least important dataset. It contains every country with it's associated ISO-2 code.
+
+- Airports.csv: This file is a subset of the one available freely from the https://openflights.org/data.html[OpenFlights website]. This subset contains 30 of the most busiest airports by passenger traffic in the world.
+
+- Airlines.csv: This file is also a subset of the airlines dataset you can find in https://openflights.org/data.html[OpenFlights]. The subset contains all the airlines that operate in the airports previously chosen.
+
+- Flights.csv: The final file contains all the routes between the selected airports from the 6th to the 10th of November of 2017. This routes where obtained using the https://developer.flightstats.com/[FlightStats API]. The dataset contains a lot of information but for the purposes of this GraphGist we will just use the flight number, and import a small number of flights.
+
+
+== Setup
+Now that we know how our model works and the data that we will use we can start creating the different nodes and relationships of our database. To do this we will use the command LOAD CSV, which will let us import easily all the datasets described previously.
+We will start importing into the database the different countries with their 2 letter codes.
+
+//setup
+[source,cypher]
+----
+LOAD CSV WITH HEADERS
+FROM 'https://raw.githubusercontent.com/alejgh/neo4j_flights/master/datasets/countries.csv'
+AS line
+CREATE (:Country { code: line.Code, name: line.Name })
+----
+
+Now we will introduce the different airports, and create a relationship that joins each airport to the country
+where they are located.
+//setup
+[source,cypher]
+----
+LOAD CSV WITH HEADERS
+FROM 'https://raw.githubusercontent.com/alejgh/neo4j_flights/master/datasets/airports.csv'
+AS line
+CREATE (a:Airport { name: line.name, city: line.city, iata: line.iata, icao: line.icao })
+WITH a, line
+MATCH (c:Country)
+WHERE c.name = line.country
+CREATE (a)-[:IS_LOCATED_IN]->(c)
+----
+
+After that, we introduce the airlines, creating again a relationship
+with the country where each airline is incorporated.
+//setup
+[source,cypher]
+----
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/alejgh/neo4j_flights/master/datasets/airlines.csv' AS line
+CREATE (a:Airline { name: line.name, city: line.city, iata: line.iata, icao: line.icao })
+WITH a, line
+MATCH (c:Country)
+WHERE c.name = line.country
+CREATE (a)-[:IS_INCORPORATED_IN]->(c)
+----
+
+Finally, we introduce the flights data, and create their corresponding relationships.
+//setup
+[source,cypher]
+----
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM
+'https://raw.githubusercontent.com/alejgh/neo4j_flights/master/datasets/flights.csv'
+AS line
+WITH line
+LIMIT 750
+CREATE (flight:Flight { number: line.flight_number })
+WITH flight, line
+MATCH (departure:Airport)
+MATCH (arrival:Airport)
+MATCH (airline:Airline)
+WHERE departure.iata = line.departure_airport AND arrival.iata = line.arrival_airport
+AND airline.iata = line.airline_code
+CREATE (airline)-[:PROVIDES]->(flight),
+(flight)-[:DEPARTS_AT { date: line.departure_time, timestamp: line.departure_timestamp }]->(departure),
+(flight)-[:ARRIVES_AT { date: line.arrival_time, timestamp: line.arrival_timestamp}]->(arrival)
+----
+
+
+== Basic Queries
+
+To warm up and understand a bit more our graph structure, we will start 
+with some basic queries.
+
+=== Airlines and the country they are incorporated in
+In our first query we will obtain information about every airline in the database. We will return the name of the airline, its IATA code, its ICAO code and the name of the country where they are incorporated.
+
+[source,cypher]
+----
+MATCH (a:Airline)-[:IS_INCORPORATED_IN]->(c:Country)
+RETURN a.name as Airline, a.iata as IATA, a.icao as ICAO, c.name as Country
+----
+
+//table
+
+=== Top 10 airlines that provide the most amount of flights
+Now we will see which are the 10 airlines that provide the most amount of flights. We can check this easily using the relationship 'PROVIDES'.
+
+[source, cypher]
+----
+MATCH (airline:Airline)-[:PROVIDES]->(f:Flight)
+RETURN airline.name as airline, count(f) as flights_provided
+ORDER BY flights_provided DESC
+LIMIT 10
+----
+
+//table
+
+=== Flights from Chicago to London
+Using this model we have no problem to check which flights are available between two cities. We also order the flights by their departure time.
+
+[source, cypher]
+----
+MATCH (dptAirp:Airport)<-[dptAt:DEPARTS_AT]-(:Flight)-[arrAt:ARRIVES_AT]->(arrAirp:Airport)
+WHERE dptAirp.city = 'Chicago' and arrAirp.city = 'London'
+RETURN DISTINCT dptAirp.name AS departure_airport, dptAt.date AS departure_date, arrAt.date AS arrival_date, arrAirp.name AS arrival_airport
+ORDER BY departure_date
+----
+
+//table
+
+=== Number of departures from every airport each day
+To finish warming up, we will check how many flights depart from each airport every day. We will split the date attribute to separate the date and the time, so we can group the results by day (remember the datetime format was 'YYYY-MM-DD HH:mm:ss').
+
+[source, cypher]
+----
+MATCH (airport:Airport)<-[departs:DEPARTS_AT]-(f:Flight)
+RETURN airport.name as airport, split(departs.date, ' ')[0] as day, count(f) as departures
+ORDER BY airport.name, day
+----
+
+//table
+
+== Intermediate queries
+Now that we got a feeling of how our model works we can start doing more interesting queries.
+
+=== Flights from Spain to the United States ordered by date.
+We can also check what are the available flights between two countries using the country nodes. In this case we will return every flight that departs from Spain and arrives to the United States.
+
+[source,cypher]
+----
+MATCH (dptAirp:Airport)<-[dptAt:DEPARTS_AT]-(:Flight)-[arrAt:ARRIVES_AT]->(arrAirp:Airport),
+(spain:Country)<-[:IS_LOCATED_IN]-(dptAirp), (us:Country)<-[:IS_LOCATED_IN]-(arrAirp)
+WHERE spain.code = 'ES' and us.code = 'US'
+RETURN DISTINCT dptAirp.name as departure_airport, dptAt.date as departure_date, arrAt.date as arrival_date, arrAirp.name as arrival_airport
+ORDER BY departure_date
+----
+
+//table
+
+=== Number of flights departing from and arriving to every airport.
+In this query we will return the total number of departures and the total number of arrivals of every airport.
+
+[source, cypher]
+----
+MATCH (airport:Airport)<-[:DEPARTS_AT]-(f:Flight)
+WITH airport, count(f) as departures
+MATCH (f2:Flight)-[:ARRIVES_AT]->(airport)
+RETURN airport.name as airport_name, departures, count(f2) as arrivals
+----
+
+//table
+
+=== Flights from New York to Los Angeles on the 8th of November.
+Before we proceed to the advanced queries, we will return every flight from New York to Los Angeles on the 8th of November, as well as the airline that provides the flight. As you can see, thanks to the format we use to store the datetime we can compare dates really easily in a human readable way. If we needed to increase the performance we could use the timestamp attribute instead of comparing the strings.
+
+[source, cypher]
+----
+MATCH (dpt_airp:Airport{city: 'New York'})<-[departure:DEPARTS_AT]-(f:Flight)-[:ARRIVES_AT]->(arr_airp:Airport{city: 'Los Angeles'}), (airline:Airline)-[:PROVIDES]->(f)
+WHERE departure.date > '2017-11-08 00:00:00' AND departure.date < '2017-11-09 00:00:00'
+RETURN airline.name as airline, dpt_airp.name as departure_airport, arr_airp.name as arrival_airport, departure.date as departure_date
+ORDER BY departure.date
+----
+
+//table
+
+== Advanced queries.
+To finish showing the capabilities of this model we will do some advanced queries.
+
+=== Paths from Beijing Capital Airport to John F. Kennedy Airport.
+In this query we want to go from Beijing (Beijing Capital Airport) to New York (John F. Kennedy Airport). However, there isn't any available flight between the two airports. Using Neo4j's paths feature we can get a route between these two airports making any number of intermediate flights. To avoid getting a huge number of results we will compute the only the paths starting on the 7th of November, and doing 2 flights at most.
+As you can see in the query code, there is a little trick we have to take into account before making the query. We need to check that all the relationships of the path follow an order in time (if we arrive from Beijing to Paris the 8th of November, we can't take a flight from Paris to New York the 6th of November). That's the meaning of the 'WHERE ALL' code of the query.
+
+[source, cypher]
+----
+MATCH p=((src:Airport{name: 'Beijing Capital International Airport'})-[*1..4]-(dest:Airport{name: 'John F Kennedy International Airport'}))
+WHERE ALL (i in range(0, size(relationships(p))-2) WHERE (relationships(p)[i]).date < (relationships(p)[i+1]).date)
+AND (relationships(p)[0]).date > '2017-11-07 00:00:00'  AND (relationships(p)[0]).date < '2017-11-08 00:00:00'
+RETURN p
+----
+
+//graph_result
+
+=== And with which one of the previous routes can we get faster to our destination?
+If we just add two more lines of code to the previous query, we can also get which one of the previous paths arrives earlier to the destination.
+
+[source, cypher]
+----
+MATCH p=((src:Airport{name: 'Beijing Capital International Airport'})-[*1..4]-(dest:Airport{name: 'John F Kennedy International Airport'}))
+WHERE ALL (i in range(0, size(relationships(p))-2) WHERE (relationships(p)[i]).date < (relationships(p)[i+1]).date)
+AND (relationships(p)[0]).date > '2017-11-07 00:00:00'  AND (relationships(p)[0]).date < '2017-11-08 00:00:00'
+RETURN p
+ORDER BY (relationships(p)[size(relationships(p))-1]).date
+LIMIT 1
+----
+
+//graph_result
+
+=== Shortest path from Madrid to Seoul.
+Finally, we can use neo4j's shortestpath function to get the shortest path between two airports. This doesn't mean that we will get the path that arrives earlier to our destination, but we will get the path that makes the least amount of intermediate flights, so if we don't want to spend a lot of money doing several flights we can make use of this query.
+
+[source,cypher]
+----
+MATCH p=shortestpath((src:Airport{city: 'Madrid'})-[*..15]-(dest:Airport{city: 'Seoul'}))
+WHERE ALL (i in range(0, size(relationships(p))-2) WHERE (relationships(p)[i]).date < (relationships(p)[i+1]).date)
+RETURN p
+----
+
+//graph_result
+
+
+== Conclusions
+As you can see, we have modeled the flight network system in a really easy but powerful way thanks to neo4j's capabilities. We can obtain different information in many different and intuitive ways using the cypher query language. Altough I have shown some example queries there are a lot more you can make! So I encourage you to try some queries and explore the dataset using the console below. 
+
